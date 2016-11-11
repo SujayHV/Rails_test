@@ -5,7 +5,7 @@ end
 def create
   user = User.authenticate(params[:email], params[:password])
   # binding.pry
-  # if user
+  if user
   	# binding.pry
     session[:user_id] = user.id
     redirect_to events_path, :notice => "Logged in!"
@@ -14,7 +14,6 @@ def create
     render "new"
   end
 end
-
 
 # def destroy
 #   session[:user_id] = nil

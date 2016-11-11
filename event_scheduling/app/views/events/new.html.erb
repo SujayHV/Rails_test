@@ -1,7 +1,9 @@
+
+<div class="mid"><center>
 <%= form_for :event do |f| %>
 <p>
-   <%= f.label :eventtitle %><br />
-   <%= f.text_field :eventtitle %>
+   <%= f.label :title %><br />
+   <%= f.text_field :title %>
  </p>
  <p>
    <%= f.label :venue %><br />
@@ -27,4 +29,6 @@
    <%= f.label :status %><br />
    <%= f.text_field :status %>
  </p>
+ <p class="button"><%= f.submit %></p>
  <% end %>
+ </div></center>
