@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <title>Bootstrap Case</title>
+ <title>event_scheduling</title>
  <meta charset="utf-8">
  <meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style>
+body {
+    background-image: "../assets/events.jpg";
+    background-repeat: no-repeat;
+}
+</style>
 </head>
 <body>
 
@@ -19,23 +25,23 @@ Event Scheduling
    </div>
    
    <ul class="nav navbar-nav navbar-right">
-     <li> <%= link_to "Sign_up", sign_up_path,class: "btn btn-lg btn-primary" %></li>
-     <li> <%= link_to "log_in", log_in_path,class: "btn btn-lg btn-primary" %></li>
+   <li> <%= link_to "Home", root_path,class: "btn btn-lg btn-primary" %></li>
+     <li> <%= link_to "Signup", sign_up_path,class: "btn btn-lg btn-primary" %></li>
+     <li> <%= link_to "login", log_in_path,class: "btn btn-lg btn-primary" %></li>
    </ul>
  </div>
 </nav>
 
+<div class="container">
+<% flash.each do |type,message| %>
+<div class="alert alert-<%= type  %>"><%= message %></div>
+<% end %>
 
 
  
 <%= yield %>
 
 <footer style="background-color:#c8c9ce ">
-    <!-- =========================================================================  -->
- 
-
-   <!-- search bar -->
-
    <div class="row">
    <div class="col-lg-8">
      <p><a href="">BLOG &middot;</a><a href="">CONTACT</a>&copy; 2016 Company, Inc. &middot;<a href="#">Privacy</a> &middot; <a href="#">Terms</a>
@@ -47,6 +53,7 @@ Event Scheduling
        </div>
        <div class="col-lg-4">
    
+   </div>
    </div>
        </footer>
 </body>

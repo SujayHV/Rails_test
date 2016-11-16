@@ -3,12 +3,11 @@ class SessionsController < ApplicationController
 end
 
 def create
-  user = User.authenticate(params[:email], params[:password])
-  # binding.pry
+  user = User.authenticate(params[:user_name], params[:password])
   if user
-  	# binding.pry
     session[:user_id] = user.id
-    redirect_to events_path, :notice => "Logged in!"
+  # binding.pry
+    redirect_to user_events_path(user)
   else
     flash.now.alert = "Invalid email or password"
     render "new"

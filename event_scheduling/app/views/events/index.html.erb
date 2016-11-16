@@ -1,0 +1,124 @@
+<div class="row">
+    <div class="col-xs-6">
+ <% @events.each do |event| %>
+
+    <div class="row" style="background-color:#D3D3D3 ; margin:5px; padding:20px">
+    <label style="color:green">Event:</label><label> <%= event.title %></label><br>
+    <label>Description: <%= event.description %></label> 
+
+    <%= link_to 'Edit event', edit_user_event_path(@user, event) %>
+<div class="container">
+ 
+ <a  data-toggle="modal" data-target="#myModal2">Participents</a>
+
+
+ <!-- Modal -->
+ <div class="modal fade" id="myModal2" role="dialog">
+   <div class="modal-dialog">
+   
+     <!-- Modal content-->
+     <div class="modal-content">
+       <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <h4 class="modal-title">Modal Header</h4>
+       </div>
+       <div class="modal-body">
+       <%@users=event.invitee%>
+
+
+       <% @users.each do |user| %>
+       <%= user.user_name %>
+       <% end %>
+
+         <!-- <p>Some text in the modal.</p> -->
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       </div>
+     </div>
+     
+   </div>
+ </div>
+ 
+</div>       
+
+    </div>
+ <% end %>
+
+</div>
+<div class="col-xs-6">
+  <div class="container">
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Create event</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">New Event</h4>
+      </div>
+      <div class="modal-body"><h1 align="center">Event list</h1>
+<center>
+<%= form_for :event do |f| %>
+
+  <p>
+   <%= f.label :title %><br />
+   <%= f.text_field :title %>
+ </p>
+  <p>
+   <%= f.label :venue %><br />
+   <%= f.text_field :venue %>
+ </p>
+ <p>
+   <%= f.label :date %><br />
+   <%= f.text_field :date %>
+ </p>
+ <p>
+   <%= f.label :time %><br />
+   <%= f.text_field :time %>
+ </p>
+  <p>
+   <%= f.label :description %><br />
+   <%= f.text_field :description %>
+ </p>
+  <p>
+   <%= f.label :invitees %><br />
+   <%= f.text_field :invitees %>
+ </p>
+  <p>
+  <%= f.select :status, ['open', 'closed']%>
+ </p>
+ <ul style="list-style:none; display:inline">
+
+  <% @myusers.each do |role| %>
+    <li>
+      <%= check_box_tag 'role_ids[]', role.id %>
+      <%= role.user_name %>
+    </li>
+  <% end %>
+</ul>
+
+ <p class="button"><%= f.submit %></p>
+<% end %>
+</center>
+
+     </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+</div>
+</div>
+</div>
+    </div>
+
+
+
+
+
+
+</div>

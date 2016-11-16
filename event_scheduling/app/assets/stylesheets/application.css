@@ -14,3 +14,9 @@
  *= require_self
  */
  .mid{margin-left: 100px}
+ body{
+ 	background-image:    ../assets/events.jpg;
+    background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center;
+ }
