@@ -57,7 +57,7 @@ def edit
   private
   def event_params
     # binding.pry
-    params.require(:event).permit(:title,:venue,:date,:time,:description,:invitees,:status)
+    params.require(:event).permit(:title,:venue,:date,:time,:description,:status)
   end
   def find_user
     @user=User.find_by_id(params[:user_id])

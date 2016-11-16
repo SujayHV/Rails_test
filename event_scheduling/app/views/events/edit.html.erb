@@ -1,18 +1,51 @@
-<%= form_for :event, url:user_event_path, method: :put do |f|%>
+<nav class="navbar navbar-inverse">
+ <div class="container-fluid">
+   <div class="navbar-header">
+     <a class="navbar-brand" href="#">
+Event Scheduling
+</a>
+   </div>
+   
+   <ul class="nav navbar-nav navbar-right">
+   <li> <%= link_to "Home", root_path,class: "btn btn-lg btn-primary" %></li>
+     
+     <li> <%= link_to "logout", log_in_path,class: "btn btn-lg btn-primary" %></li>
+   </ul>
+ </div>
+</nav>
+<%if @event.user_id == @user.id%>
 
+<%= form_for :event, url: user_event_path, method: :put do |f|%>
 
-<%= f.label :Enter_Event_name%>    <%= f.text_field :title %></br></br>
-  <%= f.label :Enter_Venue%>       <%= f.text_field :venue %></br></br>
-  <%= f.label :Enter_date%>       <%= f.text_field :date %></br></br>
-  <%= f.label :Enter_time %>           <%= f.text_field :time %></br></br>
-  <%= f.label :Enter_description%>    <%= f.text_area :description, size: "60x5" %></br></br>
-  <%= f.label :Invited_by %> </br>    
-  <%= current_user.user_name%> </br>
-   </br>
-  <%= f.label :Select_invitee %> 
-  <%= f.label :Enter_Status%>  
-  <%= f.select :status, ['open', 'closed']%></br></br></br>
+<%= f.label :Enter_Event_name%>    <%= f.text_field :title ,:disabled => true %></br></br>
+<%= f.label :Enter_Venue%>       <%= f.text_field :venue,:disabled => true %></br></br>
+<%= f.label :Enter_date%>       <%= f.text_field :date ,:disabled => true%></br></br>
+<%= f.label :Enter_time %>           <%= f.text_field :time,:disabled => true %></br></br>
+<%= f.label :Enter_description%>    <%= f.text_area :description, size: "60x5",:disabled => true %></br></br>
+<%= f.label :Invited_by %> </br>    
+<%= current_user.email%> </br>
+
+</br>
+<%= f.label :Select_invitee %> 
+<%= f.label :Enter_Status%>  
+
+<%= f.submit :Submit,:class=>"btn" %>
+<%end%>
+<%else%>
+
+<%= form_for :event, url: user_event_path, method: :put do |f|%>
+
+<%= f.label :Enter_Event_name%>    <%= f.text_field :title  %></br></br>
+<%= f.label :Enter_Venue%>       <%= f.text_field :venue%></br></br>
+<%= f.label :Enter_date%>       <%= f.text_field :date %></br></br>
+<%= f.label :Enter_time %>           <%= f.text_field :time%></br></br>
+<%= f.label :Enter_description%>    <%= f.text_area :description, size: "60x5" %></br></br>
+<%= f.label :Invited_by %>     <%= current_user.user_name%> </br></br>
+</br>
+<%= f.label :Select_invitee %> 
+<%= f.label :Enter_Status%>  
+
 <%= f.submit :Submit,:class=>"btn" %>
 
 <%end%>
-
+<%end%>

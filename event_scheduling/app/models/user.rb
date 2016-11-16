@@ -7,10 +7,13 @@ has_many :invitations,foreign_key: :invitee_id
   attr_accessor :password
   before_save :encrypt_password
   
-  validates_confirmation_of :password
-  validates_presence_of :password, :on => :create
-  validates_presence_of :user_name
-  validates_uniqueness_of :user_name
+  validates :first_name, presence: :true
+ validates :last_name, presence: :true
+ validates :phone_number, presence: :true
+ validates :password, presence: :true
+ validates_confirmation_of :password
+ validates :user_name,uniqueness: :true
+ validates :email, presence: :true, uniqueness: :true
   
   def self.authenticate(user_name, password)
     # binding.pry

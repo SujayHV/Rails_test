@@ -1,43 +1,60 @@
-<h1>Sign Up</h1>
+<nav class="navbar navbar-inverse">
+ <div class="container-fluid">
+   <div class="navbar-header">
+     <a class="navbar-brand" href="#">
+Event Scheduling
+</a>
+   </div>
+   
+   <ul class="nav navbar-nav navbar-right">
+   <li> <%= link_to "Home", root_path,class: "btn btn-lg btn-primary" %></li>
+    
+     <li> <%= link_to "login", log_in_path,class: "btn btn-lg btn-primary" %></li>
+   </ul>
+ </div>
+</nav>
+ </div><h1>Sign Up</h1>
 
 <%= form_for @user do |f| %>
-  <% if @user.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
-      <ul>
-        <% for message in @user.errors.full_messages %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+
+ <% if @user.errors.any? %>
+   <div class="error_messages">
+     <h2>Form is invalid</h2>
+     <ul>
+       <% for message in @user.errors.full_messages %>
+         <li><%= message %></li>
+       <% end %>
+     </ul>
+   </div>
+ <% end %>
+  
   <p>
     <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
+    <%= f.text_field :first_name,:required=>true%>
   </p>
   <p>
     <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
+    <%= f.text_field :last_name,:required=>true %>
   </p>
   <p>
     <%= f.label :user_name %><br />
-    <%= f.text_field :user_name %>
+    <%= f.text_field :user_name,:required=>true %>
   </p>
   <p>
     <%= f.label :email %><br />
-    <%= f.text_field :email %>
+    <%= f.text_field :email,:required=>true %>
   </p>
   <p>
     <%= f.label :phone_number %><br />
-    <%= f.text_field :phone_number %>
+    <%= f.text_field :phone_number ,:required=>true%>
   </p>
   <p>
     <%= f.label :password %><br />
-    <%= f.password_field :password %>
+    <%= f.password_field :password ,:required=>true%>
   </p>
   <p>
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password_confirmation,:required=>true %>
   </p>
   <p class="button"><%= f.submit %></p>
 <% end %>
