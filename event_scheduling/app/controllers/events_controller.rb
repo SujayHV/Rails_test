@@ -1,11 +1,11 @@
 class EventsController < ApplicationController
   before_filter :find_user
-	def new
- 		# binding.pry
-  		@event = Event.new
+  def new
+    # binding.pry
+      @event = Event.new
       # @events = Event.find_by
       @myusers = User.all
-	end
+  end
 
 def create
   @event = Event.new(event_params)
@@ -23,7 +23,7 @@ end
     redirect_to user_events_path
 
 else
-	render "new"
+  render "new"
 end
 
 
@@ -31,7 +31,7 @@ end
 end
 
 def index 
-	@events=@user.events
+  @events=@user.events
   # @users = User.all
       @myusers = User.all
 
@@ -41,8 +41,8 @@ end
 
 def edit 
   @event=Event.find_by_id(params[:id])
-	
-	end
+  
+  end
 
   def update
     @event=Event.find_by_id(params[:id])
@@ -54,11 +54,11 @@ def edit
 
 
 
-	private
-	def event_params
+  private
+  def event_params
     # binding.pry
-		params.require(:event).permit(:title,:venue,:date,:time,:description,:invitees,:status)
-	end
+    params.require(:event).permit(:title,:venue,:date,:time,:description,:invitees,:status)
+  end
   def find_user
     @user=User.find_by_id(params[:user_id])
   end

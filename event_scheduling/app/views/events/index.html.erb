@@ -9,11 +9,11 @@
     <%= link_to 'Edit event', edit_user_event_path(@user, event) %>
 <div class="container">
  
- <a  data-toggle="modal" data-target="#myModal2">Participents</a>
+ <a  data-toggle="modal" data-target="#myModal2-<%=event.id%>">Participents</a>
 
 
  <!-- Modal -->
- <div class="modal fade" id="myModal2" role="dialog">
+ <div class="modal fade" id="myModal2-<%=event.id%>" role="dialog">
    <div class="modal-dialog">
    
      <!-- Modal content-->
@@ -23,7 +23,7 @@
          <h4 class="modal-title">Modal Header</h4>
        </div>
        <div class="modal-body">
-       <%@users=event.invitee%>
+       <%@users=event.invitees%>
 
 
        <% @users.each do |user| %>
